@@ -32,7 +32,8 @@ header {
 }
 
 /* creating a seperation line after the card header and border*/
-.card-header, .card-body{
+.card-header,
+.card-body {
   border-bottom: 2px solid #e7e9eb;
 }
 
@@ -41,7 +42,7 @@ header {
 }
 
 #password {
-  -webkit-appearance: none; /* appearance */
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 100%;
@@ -52,7 +53,7 @@ header {
   margin: 10px 0;
   border: 2px dashed #c0c7cf;
   border-radius: 6px;
-  resize: none;  /* dont know what this and overflow is for */
+  resize: none;
   overflow: hidden;
 }
 
@@ -65,8 +66,7 @@ header {
   border: none;
   background-color: hsl(360, 91%, 36%);
   border-radius: 25px;
-  /* box-shadow: 0px 1px 6px 0px  rgba(0, 0, 0, 0.1), 0px 1px 1px
-    0px rgba(0, 0, 0, 0.2) ; */
+  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.1), 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
   color: hsl(0, 0%, 100%);
   font-size: 22px;
   line-height: 22px;
