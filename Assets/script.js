@@ -1,5 +1,5 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 generateBtn.addEventListener("click", writePassword);
@@ -9,10 +9,8 @@ function writePassword() {
   let numLowercase = 0;
   let numUppercase = 0;
   let numNumber = 0;
-  let numSChar = 0;
-  let letters= "abcdefghijklmnpqrstuvwxyz".split(""); 
-  let numbers= "1234567890".split("");
-  let special= "!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~".splice("");
+  let numSpecial = 0;
+
 
   //Asking for user input//
   //password length
@@ -60,17 +58,35 @@ function writePassword() {
   }
 
 
+
+
+
+
+  let lower = "abcdefghijklmnpqrstuvwxyz";
+  let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let numbers = "1234567890";
+  let special = "!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~";
+  let orderedPw = ""
+
+  //function that will select random values from 
+  let ranChar = function (x, y) { //x is the number of charcters that data type needs. y refers to the type of data. z is the collection
+    for (let i = 0; i < x; i++) {
+      orderedPw += y.charAt(Math.floor(Math.random() * (y.length + 1)));
+    }
+  }
+
   //randomizing how many characters per chosen character type. max length = the user inputed length. min length= reserved for at least one of each chosen type (true)
   if (lowercase) {
     if (pwType == 1) {
       numLowercase = lengthInput;
     } else {
       numLowercase = Math.floor(Math.random() * (lengthInput - pwType) + 1);
-      lengthInput = lengthInput - numLowercase;
-      totalLength = totalLength + numLowercase;
+      lengthInput = lengthInput - numLowercase; //can be commented out later
+      totalLength = totalLength + numLowercase; //can be commented out later
     }
+    ranChar(numLowercase, lower);
     pwType--;
-    console.log(numLowercase + " lowercase, " + lengthInput + " characters left, " + pwType + " password types left, " + totalLength + " length so far");
+    console.log(numLowercase + " lowercase, " + lengthInput + " characters left, " + pwType + " password types left, " + totalLength + " length so far"); //can be commented out later
   }
   if (uppercase) {
     if (pwType == 1) {
@@ -80,6 +96,7 @@ function writePassword() {
       lengthInput = lengthInput - numUppercase;
       totalLength = totalLength + numUppercase;
     }
+    ranChar(numUppercase, upper);
     pwType--;
     console.log(numUppercase + " uppercase, " + lengthInput + " characters left, " + pwType + " password types left, " + totalLength + " length so far");
   }
@@ -91,35 +108,58 @@ function writePassword() {
       lengthInput = lengthInput - numNumber;
       totalLength = totalLength + numNumber;
     }
+    ranChar(numNumber, numbers);
     pwType--;
     console.log(numNumber + " numbers, " + lengthInput + " characters left, " + pwType + " password types left, " + totalLength + " length so far");
   }
   if (sChar) {
     if (pwType == 1) {
-      numSChar = lengthInput;
+      numSpecial = lengthInput;
     } else {
-      numSChar = Math.floor(Math.random() * (lengthInput - pwType) + 1);
-      lengthInput = lengthInput - numSChar;
-      totalLength = totalLength + numSChar;
+      numSpecial = Math.floor(Math.random() * (lengthInput - pwType) + 1);
+      lengthInput = lengthInput - numSpecial;
+      totalLength = totalLength + numSpecial;
     }
+    ranChar(numSpecial, special);
     pwType--;
-    console.log(numSChar + " special characters, " + lengthInput + " characters left, " + pwType + " password types left, " + totalLength + " length so far");
+    console.log(numSpecial + " special characters, " + lengthInput + " characters left, " + pwType + " password types left, " + totalLength + " length so far");
   }
-  console.log("lowercase:"+ numLowercase + " uppercase:"+ numUppercase+ " numbers:" + numNumber + " special characters:" + numSChar);
+  console.log("lowercase:" + numLowercase + " uppercase:" + numUppercase + " numbers:" + numNumber + " special characters:" + numSpecial);
+
+  // numLowercase = 3. we need three special characters
+  // x = numLowercase
+  // x = 3.
+  // y = lower (abc)
+  // z = characters for the password
 
 
 
+  console.log(orderedPw);
+  //now i have to shuffle the numbers
 
 
+  //shuffling the ordered password
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  orderedPw= orderedPw.split("");  //turning the ordered password into an array
+  let a,b,c //initializing variables to let us swap indexes
+  console.log(orderedPw);
+  for (a = 0; a <= orderedPw.length; a++) { //going through each index of the orderedPw array
+    b = Math.floor(Math.random() * a); //giving b a random value 
+    c = orderedPw[a]; //storing the a-th index value of the orderedPw into c
+    orderedPw[a] = orderedPw[b]; // replacing the a-th value with b-th value
+    orderedPw[b] = c; //putting the c value (old a) into b and repeating until we go through the whole array
+  }
 
-  passwordText.value = password;
+  let password = orderedPw.join("");
+  console.log(password);
+  document.querySelector("#password").value = password;
 
 }
 
-
+/*
+if(isLowercase){
+  pwChar += lowercase.charAt(Math.floor(Math.random() * n));
+}
 
 /*
 1. output password that meets user criteria
@@ -132,4 +172,16 @@ function writePassword() {
       special characters
     input should be validated and have at least one of each chosen type
 3. either displayed in an alert or written to the page
+*/
+
+/*
+function generatePassword() {
+  var length = 8,
+      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
+}
 */
