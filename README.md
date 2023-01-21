@@ -1,100 +1,48 @@
-# 03 JavaScript: Password Generator
+# Password Generator
 
-## Your Task
+## Description
 
-This week's Challenge requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
+This project is a random password generator that is capable of receiving user input and producing a string of characters based on the user criteria. The intention is to generate a secure password that allows the user to feel confident when protecting sensitive data. This is done through Javascript with the help of methods, functions, loops and math logic.
 
-The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
+## Deployed Application Link:
 
-## User Story
+https://jjocelynn.github.io/password-generator/
 
-```
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-```
+## Usage
 
-## Acceptance Criteria
+When the user clicks the "Generate Password" button, a function runs that will ask the user various prompts. Depending on the user's answer, an if statement will generate a random set of characters in a random order and display it on the screen.
 
-```
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN asked for character types to include in the password
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-```
+screen upon loading:
+![screen with a red "Generate Password" button](./assets/images/screen-upon-load.jpg)
 
-## Mock-Up
+prompt asking the user to choose a length for their password:
+!["choose a password length" prompt](./assets/images/password-length-prompt.jpg)
 
-The following image shows the web application's appearance and functionality:
+If the user enters a number lower than 8, higher than 128, or a letter, the prompt will require them to choose again.
+!["*Must choose a length between 8 and 128" prompt](./assets/images/password-length-requirements.jpg)
 
-![The Password Generator application displays a red button to "Generate Password".](./assets/images/03-javascript-homework-demo.png)
+asking if the user would like to include lowercase letters:
+![lowercase letter prompt](./assets/images/lowercase-letters-prompt.jpg)
 
-## Grading Requirements
+asking if the user would like to include uppercase letters:
+![uppercase letter prompt](./assets/images/uppercase-letters-prompt.jpg)
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+asking if the user would like to include numbers:
+![numbers prompt](./assets/images/number-prompt.jpg)
 
-This Challenge is graded based on the following criteria: 
+asking if the user would like to include special characters:
+![special characters prompt](./assets/images/special-character-prompt.jpg)
 
-### Technical Acceptance Criteria: 40%
+if the user chooses no character types, the function will end and ask them to try again
+![asking the user to try again](./assets/images/no-character-types.jpg)
 
-* Satisfies all of the preceding acceptance criteria.
+Depending on the length and character type(s) the user has requested, the program will display a string of characters that meet the requirement.
+![screen with a random password displayed](./assets/images/generated-password.jpg)
 
-### Deployment: 32%
+## Credits
 
-* Application deployed at live URL.
+kodeclik (shuffle letters in a word): https://www.kodeclik.com/how-to-scramble-a-word-in-javascript/
 
-* Application loads with no errors.
+## License
 
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
-- - -
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Please refer to the LICENSE in the repo
